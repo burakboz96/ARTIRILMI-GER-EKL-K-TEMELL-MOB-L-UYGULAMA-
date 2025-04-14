@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dünya Kaşifi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f2f4f8;
+      color: #1a1a1a;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+/* Genel düğme stilleri */
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Ortak stil */
+.btn-primary,
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  color: white;
+}
+
+
+
+/* GitHub Butonu */
+.btn-secondary[href*="github"] {
+  background-color: #070809; /* GitHub siyahı */
+  color: white;
+}
+
+.btn-secondary[href*="github"]:hover {
+  background-color: #1b1f23;
+  transform: translateY(-2px);
+}
+
+/* Trello Butonu */
+.btn-secondary[href*="trello"] {
+  background-color: #0079bf; /* Trello mavisi */
+}
+
+.btn-secondary[href*="trello"]:hover {
+  background-color: #005a8d;
+  transform: translateY(-2px);
+}
+
+/* Tüm ikincil butonlar için basma efekti */
+.btn-secondary:active {
+  transform: scale(0.96);
+}
+
+/* İkon stilleri */
+.icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(100%); /* Beyaz ikon efekti */
+}
+
+
+    header {
+      
+      background-color: #ffffff;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    header.shrink {
+      padding: 10px 40px;
+      background-color: #e8f0fe;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 4px;
+      background: linear-gradient(to right, #007bff, #00c6ff);
+      transition: width 0.3s ease;
+      width: 0;
+    }
+
+    header.scroll-progress::after {
+      width: var(--scroll-width);
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: #007bff;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #007bff;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .hero {
+      background: no-repeat center center/cover;
+      text-align: center;
+      padding: 300px 200px 300px;
+      color: white;
+      animation: fadeInUp 1s ease forwards;
+      position: relative;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .hero .buttons a {
+      margin: 0 12px;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .hero .buttons .btn-secondary::after {
+      content: '→';
+      font-size: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .hero .buttons .btn-secondary:hover::after {
+      transform: translateX(5px);
+    }
+
+    .btn-secondary {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+    .btn-secondary:hover {
+      background-color: #ccc;
+    }
+
+
+    .animated-image {
+  width: 600px;
+  height: auto;
+  transform: translateX(300px) scale(0.8);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+/* Ekrana geldiğinde görünür, büyür ve sağdan gelir */
+.animated-image.visible {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+/* Ekrandan çıkınca eski haline döner */
+.animated-image.hidden {
+  transform: translateX(100px) scale(0.8);
+  opacity: 0;
+}
+
+.tag-sidebar h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.tag-sidebar h3::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 2px;
+  background-color: #007bff;
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Aç-Kapa Butonu */
+.tag-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+.tag-toggle:hover {
+  background: #0056b3;
+}
+
+/* Tag Kutusu */
+.tag-sidebar {
+  position: fixed;
+  bottom: 65px;
+  left: 20px;
+  width: 280px;
+  background: #f4f4f4;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-mode .tag-sidebar {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.tag-sidebar h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.tag {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  border-radius: 50px;
+  padding: 8px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s;
+}
+
+.tag:hover {
+  transform: scale(1.1);
+  background: #0056b3;
+}
+
+body.dark-mode .tag {
+  background: #444;
+  color: #fff;
+}
+
+body.dark-mode .tag:hover {
+  background: #666;
+}
+
+/* Gizlenmiş hali */
+.tag-sidebar.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+   
+
+/* === GENEL === */
+.section {
+  padding: 100px 20px;
+  max-width: 1100px;
+  margin: 100px auto 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+/* === PROJE HAKKINDA BÖLÜMÜ === */
+.project-section {
+  position: relative;
+  background-image: url('https://raw.githubusercontent.com/burakboz96/ar-resim-deposu-/refs/heads/main/d3e3def1-a8c3-47c9-8be0-b349e2508ae5.avif');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px 40px;
+  color: #fff;
+}
+
+.overlay-content {
+  max-width: 600px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.info-box {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.info-box h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.info-box p,
+.info-box ul,
+.info-box li,
+.info-box strong {
+  color: #fff;
+}
+
+.info-box ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+/* === KARŞILAŞTIRMA BÖLÜMÜ === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+#hakkinda {
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  padding: 100px 20px;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.comparison-container {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.comparison-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #0d47a1;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.comparison-desc {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-inline: auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.comparison-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.card {
+  flex: 1 1 320px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.card.visible {
+  animation: fadeCardUp 1s ease forwards;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card h4 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #0288d1;
+  font-weight: 600;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.card ul li {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.card.visible ul li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card.visible ul li:nth-child(1) { transition-delay: 0.4s; }
+.card.visible ul li:nth-child(2) { transition-delay: 0.6s; }
+.card.visible ul li:nth-child(3) { transition-delay: 0.8s; }
+.card.visible ul li:nth-child(4) { transition-delay: 1s; }
+.card.visible ul li:nth-child(5) { transition-delay: 1.2s; }
+
+.card ul li:hover {
+  transform: translateX(6px);
+  color: #007bff;
+}
+
+/* Kart görünür olunca animasyon */
+@keyframes fadeCardUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .comparison-title {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  .card h4 {
+    font-size: 1.5rem;
+  }
+}
+
+/* === İLETİŞİM BÖLÜMÜ === */
+#destek {
+  background-color: #ffffff;
+  padding: 80px 20px;
+}
+
+.contact-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.contact-info {
+  flex: 1 1 300px;
+}
+
+.contact-info h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.contact-info p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-form {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 18px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.contact-form button {
+  padding: 14px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .section,
+  .contact-container,
+  .comparison-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .overlay-content {
+    max-width: 100%;
+  }
+
+  .info-box {
+    padding: 30px;
+  }
+}
+
+/* === Animasyon === */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.pdf-download {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #ff3c3c;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 6px 16px rgba(255, 60, 60, 0.3);
+}
+
+.pdf-download:hover {
+  background-color: #e53131;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 60, 60, 0.4);
+}
+
+.pdf-download::before {
+  content: "📎 ";
+  margin-right: 5px;
+}
+
+/* Karanlık Mod Uyumluysa örnek: */
+@media (prefers-color-scheme: dark) {
+  .pdf-download {
+    background-color: #ff4c4c;
+    color: #fff;
+  }
+
+  .pdf-download:hover {
+    background-color: #e84343;
+  }
+}
+  footer {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    margin-top: 50px;
+  }
+
+  footer p {
+    margin: 5px 0;
+    
+  }
+
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="navbar">
+    <h1>Dünya Kaşifi</h1>
+    <nav>
+      <a href="#cozumler">Akış</a>
+      <a href="#hakkinda">Proje Hakkında</a>
+      <a href="blog.html">İçerik</a>
+      <a href="#destek">İletişim</a>
+    </nav>
+    <div class="navbar-buttons">
+     
+  
+      <a href="https://github.com/kullaniciAdi" target="_blank" class="btn-secondary">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="icon">
+        GitHub
+      </a>
+  
+      <a href="https://trello.com/kullaniciAdi" target="_blank" class="btn-secondary">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/trello.svg" alt="Trello" class="icon">
+        Trello
+      </a>
+    </div>
+  </header>
+  
+  <button id="darkModeToggle" title="Karanlık Mod" style="position: fixed; bottom: 30px; right: 30px; z-index: 1000; background: #3f7fe6; color: #fff; border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-size: 18px;">
+    🌙
+</button>
+
+<!-- Aç/Kapa Butonu (Sol Alt Köşe) -->
+<div class="tag-toggle" onclick="toggleTags()">⇄</div>
+
+<!-- Güncel Konular Kutusu -->
+<div class="tag-sidebar" id="tagSidebar">
+  <h3>Güncel Konular</h3>
+  <div class="tag-cloud">
+    <span class="tag">Yapay Zeka</span>
+    <span class="tag">GSR</span>
+    <span class="tag">Blokzincir</span>
+    <span class="tag">Veri Bilimi</span>
+    <span class="tag">Arduino</span>
+    <span class="tag">Güvenlik</span>
+    <span class="tag">Swift</span>
+    <span class="tag">Hidrojeni</span>
+    <span class="tag">Microchip</span>
+  </div>
+</div>
+
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h2>Dünya Kaşifi: Artırılmış Gerçeklik Destekli Keşif Deneyimi</h2>
+    <p>Çocuklar için interaktif öğrenme, coğrafi keşifler ve kültürel mini oyunlarla dolu bir mobil macera!</p>
+    <div class="buttons">
+      <a href="#kesfet" class="btn-primary">Keşfet</a>
+      <a href="gorevler.html" class="btn-secondary">Görevleri Gör</a>
+    </div>
+  </div>
+</section>
+
+<section class="section project-section" id="kesfet">
+  <div class="overlay-content">
+    <div class="info-box">
+      <h3>PROJE HAKKINDA</h3>
+      <p>
+        <strong>Proje Amacı:</strong><br>
+        Dünya Kaşifi, çocukların dünya üzerindeki farklı kültürleri ve coğrafi bölgeleri artırılmış gerçeklik destekli görevlerle keşfetmesini sağlayan eğitici bir mobil uygulamadır.
+      </p>
+      <p>
+        <strong>Çalışma Alanı:</strong>
+        <ul>
+          <li><strong>Avatar ve Keşif Aracı Oluşturma:</strong> Oyuncular kendi karakterlerini kişiselleştirerek maceraya başlar.</li>
+          <li><strong>AR Tabanlı Keşif Görevleri:</strong> Kamera destekli görevlerle tarihi yapıları, hayvanları ve dilleri keşfederler.</li>
+          <li><strong>Mini Oyunlar ve Dil Etkinlikleri:</strong> Eğlenceli mini oyunlar ile kültürel farkındalık ve dil öğrenimi desteklenir.</li>
+        </ul>
+      </p>
+      <p>
+        <strong>Hedeflenen Sonuçlar:</strong><br>
+        Eğlenirken öğrenme, kültürel bilinç kazanımı, coğrafi farkındalık ve teknolojik etkileşimle desteklenmiş çocuk dostu bir mobil deneyim sunmak.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="hakkinda">
+  <div class="comparison-container">
+    <h3 class="comparison-title">NEDEN DÜNYA KAŞİFİ?</h3>
+    <p class="comparison-desc">
+      Eğitim ve eğlencenin buluştuğu noktadayız. Dünya Kaşifi, klasik oyunlardan farklı olarak artırılmış gerçeklik teknolojisi ile gerçek dünyayı sanal görevlerle birleştirir.
+    </p>
+    <div class="comparison-cards">
+      <div class="card">
+        <h4>Dünya Kaşifi</h4>
+        <ul>
+          <li>✅ Artırılmış gerçeklik (AR) ile etkileşim</li>
+          <li>🎮 Kültürel mini oyunlar</li>
+          <li>🌍 3D dünya haritası</li>
+          <li>👶 Çocuk dostu ve güvenli içerik</li>
+          <li>📚 Dil öğrenimi ve coğrafi bilgiler</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Geleneksel Oyunlar</h4>
+        <ul>
+          <li>❌ Sınırlı eğitim içeriği</li>
+          <li>⚠️ Gerçek dünya ile bağlantı yok</li>
+          <li>📵 Yetersiz etkileşim</li>
+          <li>🔁 Tekrarlayan görevler</li>
+          <li>⛔ Eğitsel yönü zayıf</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <section class="section" id="destek">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Bize Ulaşın</h3>
+        <p>Her türlü soru, öneri ya da destek talebiniz için bizimle iletişime geçebilirsiniz.</p>
+        <p><strong>Email:</strong> <a href="mailto:burakbozoglu96@gmail.com">burakbozoglu96@gmail.com</a></p>
+  
+        <!-- PDF İNDİRME BUTONU -->
+        <a href="tez-dosyasi.pdf" class="pdf-download" download>
+          📄 Bitirme Tezini İndir (PDF)
+        </a>
+      </div>
+  
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="Adınız" required>
+        <input type="email" name="email" placeholder="E-posta Adresiniz" required>
+        <textarea name="message" rows="5" placeholder="Mesajınız" required></textarea>
+        <button type="submit">Gönder</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Dünya Kaşifi Mobil Uygulaması . Tüm hakları saklıdır.</p>
+    <p>Burak Bozoğlu'nun Projesidir.</p>
+  
+    <!-- Sosyal medya ve LinkedIn / Akademia linkleri -->
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/burakbozoglu/" target="_blank" class="social-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn Logo" width="30" height="30">
+      </a>
+      <a href="https://akademia.com/author/burakbozoglu" target="_blank" class="social-icon">
+        <img src="data:image/png;base64,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" alt="Academia Logo" width="30" height="30">
+      </a>
+    </div>
+  </footer>
+  
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const navbar = document.getElementById('navbar');
+  
+    // Section'lar görünür olduğunda "visible" sınıfını ekle
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+  
+    function toggleTags() {
+      const sidebar = document.getElementById("tagSidebar");
+      sidebar.classList.toggle("hidden");
+    }
+  
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  
+    // Scroll ile navbar küçültme ve progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.documentElement.style.setProperty('--scroll-width', scrollPercent + '%');
+  
+      if (scrollTop > 50) {
+        navbar.classList.add('shrink', 'scroll-progress');
+      } else {
+        navbar.classList.remove('shrink', 'scroll-progress');
+      }
+    });
+  
+    // Hero arka plan resimlerini sırayla değiştirme
+    const hero = document.getElementById('hero');
+    const images = [
+      "https://github.com/burakboz96/ar-resim-deposu-/blob/main/vr-7473405.jpg?raw=true",
+      
+      "https://github.com/burakboz96/ar-resim-deposu-/blob/main/ai-generated-7828310.jpg?raw=true",
+      "https://github.com/burakboz96/ar-resim-deposu-/blob/main/sky-6768714.jpg?raw=true",
+    
+      "https://github.com/burakboz96/ar-resim-deposu-/blob/main/ar%20resim%20depo/OYUN%20BAS%CC%A7LASIN%20(1).png?raw=true"
+    ];
+    let index = 0;
+  
+    function changeHeroBackground() {
+      hero.style.backgroundImage = `url('${images[index]}')`;
+      index = (index + 1) % images.length;
+    }
+  
+    const toggleBtn = document.getElementById('darkModeToggle');
+  
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+  
+      // Toggle emoji 🌙 / ☀️
+      if (document.body.classList.contains('dark-mode')) {
+        toggleBtn.textContent = '☀️';
+      } else {
+        toggleBtn.textContent = '🌙';
+      }
+    });
+  
+    changeHeroBackground(); // İlk çağrı
+    setInterval(changeHeroBackground, 5000); // Her 5 saniyede bir değiştir
+  
+
+    // 🎯 RESİM için Intersection Observer (scroll ile sağdan girsin/gizlensin)
+    const animatedImage = document.querySelector('.animated-image');
+  
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animatedImage.classList.add('visible');
+          animatedImage.classList.remove('hidden');
+        } else {
+          animatedImage.classList.remove('visible');
+          animatedImage.classList.add('hidden');
+        }
+      });
+    }, {
+      threshold: 0.5 // %50'si görünüyorsa animasyonu başlat
+    });
+  
+    if (animatedImage) {
+      imageObserver.observe(animatedImage);
+    }
+  
+    // ✅ #hakkinda kısmı görünür olunca animasyon başlat
+    const hakkindaSection = document.querySelector('#hakkinda');
+  
+    if (hakkindaSection) {
+      const hakkindaObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const container = entry.target;
+  
+            const title = container.querySelector('.comparison-title');
+            const desc = container.querySelector('.comparison-desc');
+            const cards = container.querySelectorAll('.card');
+  
+            title.style.opacity = '1';
+            title.style.transform = 'translateY(0)';
+            desc.style.opacity = '1';
+            desc.style.transform = 'translateY(0)';
+  
+            cards.forEach((card, i) => {
+              setTimeout(() => {
+                card.classList.add('visible');
+              }, i * 300);
+            });
+  
+            hakkindaObserver.unobserve(container);
+          }
+        });
+      }, {
+        threshold: 0.3
+      });
+  
+      hakkindaObserver.observe(hakkindaSection);
+    }
+  </script>
+  
+  
+</body>
+</html>
