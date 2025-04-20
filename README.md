@@ -15,6 +15,11 @@ Kurulum
 1. Bu projeyi klonlayın:
    ```bash
    git clone https://github.com/kullanici-adi/ArX-Game.git
+Xcode'da ArX Game klasörünü açın.
+
+Cihazınızı bağlayın veya iOS simülatörünü çalıştırın.
+
+Projeyi derleyip çalıştırmak için Run tuşuna basın.
 
 PROJENİN WEB SİTESİ LİNKİ: https://burakboz96.github.io/
 
