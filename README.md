@@ -1,4 +1,4 @@
-Projenin kod dosyaları ArX dosyasında mevcuttur 
+Projenin kod dosyaları ArX Game dosyasında mevcuttur 
  
  PROJENİN WEB SİTESİ: https://burakboz96.github.io/
  
