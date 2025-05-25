@@ -1,28 +1,53 @@
- ArX Game - AR Eğitim Uygulaması (LİNKLER AŞAĞIDA)
+# ArX Game - AR Eğitim Uygulaması
 
-ArX Game, Swift dili ile geliştirilen ve artırılmış gerçeklik (AR) teknolojisini kullanan eğitsel bir mobil oyun uygulamasıdır. Xcode ile kolayca derlenip çalıştırılabilir.
+**ArX Game**, Swift ve Kotlin dilleri ile geliştirilen, artırılmış gerçeklik (AR) teknolojisini kullanan eğitsel bir mobil oyun uygulamasıdır.  
+iOS için Xcode ile kolayca derlenip çalıştırılabilir. Android için ise Kotlin ile hazırlanmış bir APK dosyası mevcuttur.
 
- Proje Yapısı
+---
+
+##  Proje Yapısı
 
 Tüm kaynak kodlar `ArX Game` klasörü içerisinde yer almaktadır. Bu klasörü indirip Xcode ile açarak projeyi derleyebilir ve çalıştırabilirsiniz.
 
-Gereksinimler
+---
+
+##  Gereksinimler
+
+### iOS için:
 - macOS işletim sistemi
 - Xcode 12 veya üzeri
 - iOS 13 veya üzeri (geliştirici cihaz için)
 
-Kurulum
+### Android için:
+- Android işletim sistemi
+- Android 9 veya üzeri
+- Android 13 veya üzeri (geliştirici cihaz için)
+
+---
+
+## 🔧 Kurulum
+
+### iOS:
 1. Bu projeyi klonlayın:
    ```bash
    git clone https://github.com/kullanici-adi/ArX-Game.git
-Xcode'da ArX Game klasörünü açın.
+Xcode’da ArX Game klasörünü açın.
 
-Cihazınızı bağlayın veya iOS simülatörünü çalıştırın.
+Geliştirici cihazınızı bağlayın veya iOS simülatörünü çalıştırın.
 
-Projeyi derleyip çalıştırmak için Run tuşuna basın.
+Run (▶) tuşuna basarak projeyi derleyip çalıştırın.
 
-PROJENİN WEB SİTESİ LİNKİ: https://burakboz96.github.io/
+Android:
+APK dosyasını indirip Android cihazınıza yükleyerek oyunu çalıştırabilirsiniz.
 
-PROJENİN VİDEOSU LİNKİ: https://www.youtube.com/watch?v=4DnZtvAWQ9Y 
+APK İndirme Linki: https://drive.google.com/file/d/1LxYVryPeAwWwilvTvvNMKApj59GCObCn/view?usp=drive_link
 
-PROJENİN TRELLO HESABI : https://trello.com/b/YEfkKsMk/ar-egi%CC%87ti%CC%87m-app
+ Proje Bağlantıları
+ Proje Web Sitesi: https://burakboz96.github.io/
+
+ Tanıtım Videosu: https://www.youtube.com/watch?v=4DnZtvAWQ9Y
+
+ Trello Projesi: https://trello.com/b/YEfkKsMk/ar-egi%CC%87ti%CC%87m-app
+
+ APK Dosyası: https://drive.google.com/file/d/1LxYVryPeAwWwilvTvvNMKApj59GCObCn/view?usp=drive_link
+
