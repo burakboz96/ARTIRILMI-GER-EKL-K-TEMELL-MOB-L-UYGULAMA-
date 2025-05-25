@@ -37,6 +37,8 @@ Geliştirici cihazınızı bağlayın veya iOS simülatörünü çalıştırın.
 
 Run (▶) tuşuna basarak projeyi derleyip çalıştırın.
 
+---
+
 Android:
 APK dosyasını indirip Android cihazınıza yükleyerek oyunu çalıştırabilirsiniz.
 
@@ -49,5 +51,26 @@ APK İndirme Linki: https://drive.google.com/file/d/1LxYVryPeAwWwilvTvvNMKApj59G
 
  Trello Projesi: https://trello.com/b/YEfkKsMk/ar-egi%CC%87ti%CC%87m-app
 
- APK Dosyası: https://drive.google.com/file/d/1LxYVryPeAwWwilvTvvNMKApj59GCObCn/view?usp=drive_link
+
+
+---
+<!-- iOS Görselleri Yan Yana ve Küçük -->
+<h3> UYGULAMA'NIN İOS TARAFINDAN ÖRNEK GÖRSELLER</h3>
+<h3>📱 UYGULAMA'NIN İOS TARAFINDAN ÖRNEK GÖRSELLER</h3>
+<div style="display: flex; gap: 10px; flex-wrap: nowrap;">
+  <img src="https://github.com/user-attachments/assets/24ded06f-e115-4b98-aa57-4d3202e6c6b1" width="230"/>
+  <img src="https://github.com/user-attachments/assets/09fa1a26-6560-4e11-88fc-65ede3a4b662" width="230"/>
+  <img src="https://github.com/user-attachments/assets/65b5fabe-d46c-43fc-aef2-09e1eee705ca" width="230"/>
+  <img src="https://github.com/user-attachments/assets/77353806-4282-4312-a3cc-b9bd3d56af65" width="230"/>
+</div>
+
+---
+
+<!-- Android Görselleri Yan Yana ve Küçük -->
+<h3> ANDROID TARAFINDA ÖRNEK GÖRSELLER</h3>
+<div style="display: flex; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/2b7b85a9-c823-4430-a074-19063dfb78cf" width="200"/>
+  <img src="https://github.com/user-attachments/assets/dc96494e-2ba9-431c-9f5a-50f1184d64f1" width="200"/>
+</div>
+
 
