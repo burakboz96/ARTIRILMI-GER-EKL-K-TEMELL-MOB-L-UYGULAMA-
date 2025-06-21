@@ -47,7 +47,7 @@ APK İndirme Linki: https://drive.google.com/file/d/1LxYVryPeAwWwilvTvvNMKApj59G
  Proje Bağlantıları
  Proje Web Sitesi: https://burakboz96.github.io/
 
- Tanıtım Videosu: https://www.youtube.com/watch?v=4DnZtvAWQ9Y
+ Tanıtım Videosu: https://youtu.be/HPEfFAd5Ne8
 
  Trello Projesi: https://trello.com/b/YEfkKsMk/ar-egi%CC%87ti%CC%87m-app
  
