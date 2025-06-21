@@ -7,7 +7,7 @@ iOS için Xcode ile kolayca derlenip çalıştırılabilir. Android için ise Ko
 
 ##  Proje Yapısı
 
-Tüm kaynak kodlar `ArX Game` klasörü içerisinde yer almaktadır. Bu klasörü indirip Xcode ile açarak projeyi derleyebilir ve çalıştırabilirsiniz.
+<h1>Tüm kaynak kodlar `ArX Game` klasörü içerisinde yer almaktadır. Bu klasörü indirip Xcode ile açarak projeyi derleyebilir ve çalıştırabilirsiniz.</h1>
 
 ---
 
@@ -31,7 +31,7 @@ Tüm kaynak kodlar `ArX Game` klasörü içerisinde yer almaktadır. Bu klasör�
 1. Bu projeyi klonlayın:
    ```bash
    git clone https://github.com/kullanici-adi/ArX-Game.git
-Xcode’da ArX Game klasörünü açın.
+Xcode’da ArX Game klasörünü yükleyin ve yazılım geliştirme ortamında (Xcode) açın.
 
 Geliştirici cihazınızı bağlayın veya iOS simülatörünü çalıştırın.
 
