@@ -50,7 +50,8 @@ APK İndirme Linki: https://drive.google.com/file/d/1LxYVryPeAwWwilvTvvNMKApj59G
  Tanıtım Videosu: https://www.youtube.com/watch?v=4DnZtvAWQ9Y
 
  Trello Projesi: https://trello.com/b/YEfkKsMk/ar-egi%CC%87ti%CC%87m-app
-
+ 
+ Projenin Dokümantasyonu: https://github.com/burakboz96/Arx-Mobil-App/blob/main/Arx%20proje%20Doku%CC%88mantasyonu.docx
 
 
 ---
